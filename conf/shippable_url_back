@@ -1,0 +1,16 @@
+upstream site {
+    server 115.178.77.150:50001;
+}
+
+server {
+    server_name agshippable.tk www.agshippable.tk;
+    listen 80;
+    location / {
+        proxy_pass http://site;
+    }
+    
+    location ^~ /.well-known {
+        allow all;
+        root /data/letsencrypt/;
+    }
+}

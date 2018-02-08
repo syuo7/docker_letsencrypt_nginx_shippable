@@ -1,0 +1,14 @@
+server {
+    listen 80;
+    server_name api.agshippable.tk; 
+    
+    location / {
+        proxy_pass http://115.178.77.150:50000;
+    }
+    
+
+    location ^~ /.well-known {
+        allow all;
+        root /data/letsencrypt/;
+    }
+}
